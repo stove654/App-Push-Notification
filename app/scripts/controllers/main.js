@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name quikiePrototypeAdminApp.controller:MainCtrl
+ * @name PushApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the quikiePrototypeAdminApp
+ * Controller of the PushApp
  */
-angular.module('quikiePrototypeAdminApp')
+angular.module('PushApp')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

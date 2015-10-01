@@ -2,24 +2,25 @@
 
 /**
  * @ngdoc overview
- * @name quikiePrototypeAdminApp
+ * @name PushApp
  * @description
- * # quikiePrototypeAdminApp
+ * # PushApp
  *
  * Main module of the application.
  */
 angular
-  .module('quikiePrototypeAdminApp', [
+  .module('PushApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'toaster'
   ])
 
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/main/push_notification");
@@ -41,4 +42,10 @@ angular
         templateUrl: "views/states/push_notification.html",
         controller: 'PushNotificationCtrl'
       })
+
+    // Use x-www-form-urlencoded Content-Type
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
+    $httpProvider.defaults.headers.put['Content-Type'] = 'application/json';
+    $httpProvider.defaults.headers.common['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'];
+
   });

@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,12 +21,13 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="quikiePrototypeAdminApp" class="error-body">
+  <body ng-app="PushApp" class="error-body">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <toaster-container toaster-options="{'time-out': 5000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
 
     <div ui-view></div>
 
@@ -53,13 +55,23 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+    <!-- configs -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+
+    <!-- controllers -->
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/push_notification.js"></script>
+
+    <!-- services -->
+    <script src="scripts/services/push_notification_factory.js"></script>
+
     <!-- endbuild -->
 </body>
 </html>

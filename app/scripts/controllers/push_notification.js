@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name quikiePrototypeAdminApp.controller:MainCtrl
+ * @name PushApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the quikiePrototypeAdminApp
+ * Controller of the PushApp
  */
-angular.module('quikiePrototypeAdminApp')
-  .controller('PushNotificationCtrl', function ($scope, $modal) {
+angular.module('PushApp')
+  .controller('PushNotificationCtrl', function ($scope, $modal, PushNotificationFactory, toaster) {
 
     $scope.totalItems = 64;
     $scope.currentPage = 4;
@@ -30,7 +30,16 @@ angular.module('quikiePrototypeAdminApp')
         controller: 'ModalPushNotificationCtrl'
       });
 
-      modalInstance.result.then(function () {
+      modalInstance.result.then(function (params) {
+
+        PushNotificationFactory.pushNotification(params).then(function (res) {
+          toaster.pop('success', res.message);
+
+          console.log(res);
+        }, function (err) {
+
+        })
+
       }, function () {
 
       });
@@ -38,9 +47,10 @@ angular.module('quikiePrototypeAdminApp')
   })
 
   .controller('ModalPushNotificationCtrl', function ($scope, $modalInstance) {
+    $scope.dataPush = {};
 
     $scope.ok = function () {
-      $modalInstance.close();
+      $modalInstance.close($scope.dataPush);
     };
 
     $scope.cancel = function () {

@@ -7,19 +7,19 @@
 <div class="modal-body">
     <div class="row form-row">
         <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Title">
+            <input type="text" class="form-control" placeholder="Title" ng-model="dataPush.title">
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Field">
+            <input type="text" class="form-control" placeholder="Field" ng-model="dataPush.field">
         </div>
     </div>
     <div class="row form-row">
         <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="Message">
+            <input type="text" class="form-control" placeholder="Message" ng-model="dataPush.message">
         </div>
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.field || !dataPush.message">Save changes</button>
 </div>
