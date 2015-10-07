@@ -20,6 +20,12 @@
     </div>
 </div>
 <div class="modal-footer">
+    <span dropdown on-toggle="toggled(open)" class="pull-left">
+      <select name="singleSelect" id="singleSelect" ng-model="data.room">
+          <option value="">---Select room---</option> <!-- not selected / blank option -->
+          <option value="{{item}}" ng-repeat="item in rooms" ng-click="selectedRoom(item)">{{item.name}}</option> <!-- interpolation -->
+      </select>
+    </span>
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.image || !dataPush.new">Save changes</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.image || !dataPush.new || data.room.$id">Save changes</button>
 </div>
