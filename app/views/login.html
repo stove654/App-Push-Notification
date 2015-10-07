@@ -6,23 +6,23 @@
         <a href="#">Sign up Now!</a> for a webarch account,It's free and always will be..</p>
       <br>
 
-      <button class="btn btn-block btn-info col-md-8" type="button">
+      <button class="btn btn-block btn-info col-md-8" type="button" ng-click="loginFacebook()">
         <span class="pull-left"><i class="icon-facebook"></i></span>
         <span class="bold">Login with Facebook</span> </button>
-      <button class="btn btn-block btn-success col-md-8" type="button">
+      <button class="btn btn-block btn-success col-md-8" type="button" ng-click="loginGoogle()">
         <span class="pull-left"><i class="icon-twitter"></i></span>
-        <span class="bold">Login with Twitter</span>
+        <span class="bold">Login with Google</span>
       </button>
     </div>
     <div class="col-md-5 "> <br>
-      <form id="login-form" class="login-form" action="index.html" method="post">
+      <form id="login-form" class="login-form" ng-click="login()">
         <div class="row">
           <div class="form-group col-md-10">
-            <label class="form-label">Username</label>
+            <label class="form-label">Email</label>
             <div class="controls">
               <div class="input-with-icon  right">
                 <i class=""></i>
-                <input type="text" name="txtusername" id="txtusername" class="form-control">
+                <input type="email" name="txtusername" id="txtusername" class="form-control" ng-model="user.email">
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
             <div class="controls">
               <div class="input-with-icon  right">
                 <i class=""></i>
-                <input type="password" name="txtpassword" id="txtpassword" class="form-control">
+                <input type="password" name="txtpassword" id="txtpassword" class="form-control" ng-model="user.password">
               </div>
             </div>
           </div>

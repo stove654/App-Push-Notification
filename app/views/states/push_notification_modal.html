@@ -10,16 +10,16 @@
             <input type="text" class="form-control" placeholder="Title" ng-model="dataPush.title">
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Field" ng-model="dataPush.field">
+            <input type="text" class="form-control" placeholder="Url image" ng-model="dataPush.image">
         </div>
     </div>
     <div class="row form-row">
         <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="Message" ng-model="dataPush.message">
+            <textarea type="text" class="form-control" placeholder="Text" ng-model="dataPush.new" rows="10"></textarea>
         </div>
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.field || !dataPush.message">Save changes</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.image || !dataPush.new">Save changes</button>
 </div>

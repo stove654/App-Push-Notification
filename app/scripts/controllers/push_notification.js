@@ -8,8 +8,11 @@
  * Controller of the PushApp
  */
 angular.module('PushApp')
-  .controller('PushNotificationCtrl', function ($scope, $modal, PushNotificationFactory, toaster) {
+  .controller('PushNotificationCtrl', function ($scope, $modal, PushNotificationFactory, toaster, $firebaseArray, APP_CONFIG, cfpLoadingBar) {
 
+    var list = $firebaseArray(new Firebase(APP_CONFIG.fireBaseUrl + 'news'));
+
+    $scope.messages = list;
     $scope.totalItems = 64;
     $scope.currentPage = 4;
 
@@ -31,11 +34,13 @@ angular.module('PushApp')
       });
 
       modalInstance.result.then(function (params) {
-
+        cfpLoadingBar.start();
+        params.createAt = new Date();
         PushNotificationFactory.pushNotification(params).then(function (res) {
-          toaster.pop('success', res.message);
-
-          console.log(res);
+          list.$add(res.data).then(function (data) {
+            toaster.pop('success', res.message);
+            cfpLoadingBar.complete();
+          });
         }, function (err) {
 
         })
@@ -44,6 +49,15 @@ angular.module('PushApp')
 
       });
     };
+
+    $scope.removeMessage = function (item) {
+      cfpLoadingBar.start();
+      list.$remove(item).then(function () {
+        toaster.pop('success', 'Deleted message');
+        cfpLoadingBar.complete();
+      });
+    }
+
   })
 
   .controller('ModalPushNotificationCtrl', function ($scope, $modalInstance) {
