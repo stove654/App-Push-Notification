@@ -6,16 +6,27 @@
 </div>
 <div class="modal-body">
     <div class="row form-row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <input type="text" class="form-control" placeholder="Title" ng-model="dataPush.title">
         </div>
-        <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Url image" ng-model="dataPush.image">
+    </div>
+    <div class="row form-row" style="margin-bottom: 10px">
+        <div class="col-md-6 pull-left" style="width: 50%">
+            <button id="tab_images_uploader_pickfiles" class="btn default " style="margin-bottom: 10px" ngf-select ng-model="files" ngf-multiple="true">
+                <i class="fa fa-plus"></i> Image intro
+            </button>
+            <img src="{{dataPush.imgIntro}}" alt="" class="img-responsive"/>
+        </div>
+        <div class="col-md-6 pull-right" style="width: 50%">
+            <button id="tab_images_uploader_pickfiles1" class="btn default " style="margin-bottom: 10px" ngf-select ng-model="files1" ngf-multiple="true">
+                <i class="fa fa-plus"></i> Image content
+            </button>
+            <img src="{{dataPush.imgIntro1}}" alt="" class="img-responsive"/>
         </div>
     </div>
     <div class="row form-row">
         <div class="col-md-12">
-            <textarea type="text" class="form-control" placeholder="Text" ng-model="dataPush.new" rows="10"></textarea>
+            <div text-angular ng-model="dataPush.new"></div>
         </div>
     </div>
 </div>
@@ -27,5 +38,5 @@
       </select>
     </span>
     <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="!dataPush.title || !dataPush.image || !dataPush.new || data.room.$id">Save changes</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">Save & push</button>
 </div>

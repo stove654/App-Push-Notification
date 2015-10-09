@@ -28,8 +28,8 @@
                             <tr ng-repeat="item in messages">
                                 <td>{{$index}}</td>
                                 <td>{{item.title}}</td>
-                                <td><img ng-src="{{item.image}}" alt="" class="img-responsive"/></td>
-                                <td><i class="fa fa-times" ng-click="removeMessage(item)"></i></td>
+                                <td><img ng-src="{{item.imgIntro}}" alt="" class="img-responsive"/></td>
+                                <td><i class="fa fa-times" ng-click="removeMessage(item)"></i> <span ng-click="edit(item)">Edit</span>/ <span ng-click="pushNow(item)">Push now</span></td>
                             </tr>
                         </tbody>
                     </table>

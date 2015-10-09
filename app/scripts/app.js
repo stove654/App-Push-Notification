@@ -20,7 +20,9 @@ angular
     'toaster',
     'LocalStorageModule',
     'firebase',
-    'chieffancypants.loadingBar'
+    'chieffancypants.loadingBar',
+    'ngFileUpload',
+    'textAngular'
   ])
 
   .run(function ($rootScope, $state, $location, SessionService) {
